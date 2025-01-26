@@ -1,0 +1,36 @@
+﻿@model Employee_Chat.Models.ManageRolesModel
+
+<h2>Manage Roles</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Current Role</th>
+            <th>New Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            var currentRole = Model.Roles.FirstOrDefault(r => User.IsInRole(r)) ?? "None";
+            <tr>
+                <td>@user.Email</td>
+                <td>@currentRole</td>
+                <td>
+                    <form asp-action="UpdateUserRole" method="post">
+                        <input type="hidden" name="userId" value="@user.Id" />
+                        <select name="role" class="form-control">
+                            @foreach (var role in Model.Roles)
+                            {
+                                <option value="@role" selected="@(role == currentRole)">@role</option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

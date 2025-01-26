@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Welcome to Employee Management and Chat  App</h1>
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to Employee Chat</h1>
+    <p class="lead">A platform for managing employees and real-time messaging.</p>
+    <hr class="my-4">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>You are logged in as @User.Identity.Name.</p>
+        <a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Dashboard")" role="button">Go to Dashboard</a>
+    }
+    else
+    {
+        <p>Login or Register to get started.</p>
+        <a class="btn btn-primary btn-lg" href="@Url.Action("Login", "Account")" role="button">Login</a>
+        <a class="btn btn-secondary btn-lg" href="@Url.Action("Register", "Account")" role="button">Register</a>
+    }
+</div>

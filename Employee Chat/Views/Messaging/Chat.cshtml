@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Employee_Chat.Models.Message>
+@{
+    ViewData["Title"] = "Chat with " + ViewBag.ReceiverEmail;
+}
+
+<h2 class="text-center">Chat with @ViewBag.ReceiverEmail</h2>
+<div id="chatWindow" style="max-height: 400px; overflow-y: scroll; background-color: #f9f9f9; padding: 10px; border-radius: 5px;">
+    @foreach (var message in Model)
+    {
+        <div style="display: flex; justify-content: @(message.SenderId == ViewBag.CurrentUserId ? "flex-end" : "flex-start"); margin: 10px;">
+            <div style="padding: 10px; border-radius: 10px; max-width: 60%;
+                        background-color: @(message.SenderId == ViewBag.CurrentUserId ? "#dcf8c6" : "#fff");
+                        box-shadow: 0 1px 3px rgba(0,0,0,0.2);">
+                <strong>@(message.SenderId == ViewBag.CurrentUserId ? "You" : ViewBag.ReceiverEmail):</strong>
+                <p>@message.Content</p>
+                <small style="font-size: 0.8em; color: gray;">@message.Timestamp.ToString("g")</small>
+            </div>
+        </div>
+    }
+</div>
+
+<form id="sendMessageForm" method="post">
+    <input type="hidden" id="receiverId" value="@ViewBag.ReceiverId" />
+    <textarea id="messageContent" rows="3" class="form-control" placeholder="Type your message..." required></textarea>
+    <button type="submit" class="btn btn-primary mt-2">Send</button>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.4/signalr.min.js"></script>
+<script>
+    const connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+    connection.start()
+        .then(() => console.log("Connected to SignalR."))
+        .catch(err => console.error("SignalR connection error:", err));
+
+    connection.on("ReceiveMessage", (senderEmail, content, timestamp) => {
+        const chatWindow = document.getElementById("chatWindow");
+
+        const isSender = senderEmail === "@ViewBag.CurrentUserEmail";
+        const messageDiv = document.createElement("div");
+        messageDiv.style.display = "flex";
+        messageDiv.style.justifyContent = isSender ? "flex-end" : "flex-start";
+        messageDiv.style.margin = "10px";
+
+        messageDiv.innerHTML = `
+            <div style="padding: 10px; border-radius: 10px; max-width: 60%; background-color: ${isSender ? "#dcf8c6" : "#fff"};">
+                <strong>${isSender ? "You" : senderEmail}:</strong>
+                <p>${content}</p>
+                <small style="font-size: 0.8em; color: gray;">${timestamp}</small>
+            </div>
+        `;
+        chatWindow.appendChild(messageDiv);
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+    });
+
+    document.getElementById("sendMessageForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const receiverId = document.getElementById("receiverId").value;
+        const content = document.getElementById("messageContent").value;
+
+        if (!content.trim()) return;
+
+        await connection.invoke("SendMessage", "@ViewBag.CurrentUserEmail", receiverId, content)
+            .catch(err => console.error("Send message error:", err));
+
+        document.getElementById("messageContent").value = "";
+    });
+</script>

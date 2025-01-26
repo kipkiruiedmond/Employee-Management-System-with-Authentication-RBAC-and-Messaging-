@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+@{
+    ViewData["Title"] = "Select Recipient";
+}
+
+<h2>Select a Recipient</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Chat" asp-route-receiverId="@user.Id">Start Chat</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
