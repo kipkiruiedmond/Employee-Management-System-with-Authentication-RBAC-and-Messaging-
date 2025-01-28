@@ -7,17 +7,5 @@
     <RootNamespace>Employee_Chat</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    //<PackageReference Include="Azure.Identity" Version="1.13.0" />
-    //<PackageReference Include="MailKit" Version="4.9.0" />
-   // <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.1" />
-   // <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.2.0" />
-    //<PackageReference Include="Microsoft.Azure.SignalR" Version="1.30.0" />
-    //<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.1" />
-   // <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.1">
-      //<PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
+ 
 </Project>
