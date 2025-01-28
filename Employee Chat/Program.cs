@@ -18,15 +18,13 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
     options.SignIn.RequireConfirmedEmail = true; // Require email confirmation
 }).AddEntityFrameworkStores<ApplicationDbContext>()
   .AddDefaultTokenProviders();
-// Configure logging
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
+
 // Add SignalR
-builder.Services.AddSignalR();
+builder.Services.AddSignalR().AddAzureSignalR(builder.Configuration["Azure:SignalR:ConnectionString"]);
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
-builder.Services.AddSignalR().AddAzureSignalR(builder.Configuration["Azure:SignalR:ConnectionString"]!);
+
 var app = builder.Build();
 
 // Seed roles
@@ -54,9 +52,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapBlazorHub();
-app.MapFallbackToPage("/_Host");
-// Map SignalR Hub
+
 app.MapHub<ChatHub>("/chatHub");
 
 app.Run();
