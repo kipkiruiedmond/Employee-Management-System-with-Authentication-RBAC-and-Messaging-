@@ -2,11 +2,15 @@
   "dependencies": {
     "signalr1": {
       "type": "signalr",
-      "connectionId": "Azure:SignalR:ConnectionString"
+      "connectionId": "Azure:SignalR:ConnectionString",
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('serviceConnectorResourceGroupName')]/providers/Microsoft.Web/sites/EmployeeChatApp/providers/Microsoft.ServiceLinker/linkers/AzureSignalRConnectionString_9FA9B29A1F",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.SignalRService/SignalR/EmployeeChat085"
     },
     "mssql2": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:DefaultConnection"
+      "connectionId": "ConnectionStrings:DefaultConnection",
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('serviceConnectorResourceGroupName')]/providers/Microsoft.Web/sites/Employees20250126211733/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsDefaultConnection_8486AC1350",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/employeesdbdbserver/databases/EmployeesDB"
     }
   }
 }

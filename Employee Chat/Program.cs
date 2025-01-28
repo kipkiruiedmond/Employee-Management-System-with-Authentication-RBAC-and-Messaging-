@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.SignalR;
 using Employee_Chat.Models;
 using Employee_Chat.Hubs;
 using Microsoft.Azure.SignalR;
+using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +25,7 @@ builder.Services.AddSignalR().AddAzureSignalR(builder.Configuration["Azure:Signa
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews();
+builder.Services.AddAzureAppConfiguration();
 
 var app = builder.Build();
 
@@ -48,6 +50,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseAzureAppConfiguration();
 
 app.MapControllerRoute(
     name: "default",
