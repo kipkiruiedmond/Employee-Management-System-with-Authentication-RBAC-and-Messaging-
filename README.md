@@ -39,7 +39,7 @@ Prerequisites
 
 Installation
 1.	Clone the repository:
-       git clone https://github.com/kipkiruiedmond/Employee-Chat/employee-chat.git
+       git clone [https://github.com/kipkiruiedmond/Employee-Chat/employee-chat.git](https://github.com/kipkiruiedmond/Employee-Chat)
     cd employee-chat
 2.	Update the database connection string in appsettings.json:
 	    "ConnectionStrings": {
