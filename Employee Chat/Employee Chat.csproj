@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>Employee_Chat</RootNamespace>
-    <UserSecretsId>db6bfdd0-b038-4e5b-b9f1-c1e115386e00</UserSecretsId>
+    
   </PropertyGroup>
 
   <ItemGroup>
