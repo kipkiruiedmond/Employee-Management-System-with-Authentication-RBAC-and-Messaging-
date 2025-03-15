@@ -78,7 +78,7 @@ Clone the repository:
 
 bash
 
-git clone [https://github.com//Employee-Chat/employee-chat.git](https://github.com/kipkiruiedmond/Employee-Chat)
+git clone [[https://github.com//Employee-Chat/employee-chat.git](https://github.com/kipkiruiedmond/Employee-Chat)](https://github.com/kipkiruiedmond/Employee-Management-System-with-Authentication-RBAC-and-Messaging-)
 
 cd employee-chat
 
