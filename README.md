@@ -1,87 +1,109 @@
 Employee Chat Application
+
 Overview
+
 The Employee Chat Application is a web-based platform designed to facilitate communication and collaboration among employees within an organization. This application leverages ASP.NET Core Razor Pages for its front-end and back-end, providing a robust and scalable solution for internal communication.
 
 Features
-User Registration and Authentication: Secure user registration, login, and logout functionalities.
 
-Role Management: Admins can manage user roles, ensuring appropriate access control.
+•	User Registration and Authentication: Users can register, log in, and log out securely.
 
-Email Confirmation: Users must confirm their email addresses to activate their accounts.
+•	Role Management: Admins can manage user roles, ensuring appropriate access control.
 
-Password Management: Users can reset their passwords if they forget them.
+•	Email Confirmation: Users must confirm their email addresses to activate their accounts.
 
-Real-Time Chat: Employees can communicate in real-time using SignalR.
+•	Password Management: Users can reset their passwords if they forget them.
 
-User and Role Management: Admins can view and edit user roles.
+•	Real-Time Chat: Employees can communicate in real-time using SignalR.
+
+•	User and Role Management: Admins can view and edit user roles.
 
 Technologies Used
-ASP.NET Core 9.0: The primary framework for building the web application.
 
-Razor Pages: Used for building the user interface.
+•	ASP.NET Core 9.0: The primary framework for building the web application.
 
-Entity Framework Core: An ORM (Object-Relational Mapper) for database operations.
+•	Razor Pages: Used for building the user interface.
 
-SQL Server: The database management system used to store application data.
+•	Entity Framework Core: An ORM (Object-Relational Mapper) for database operations.
 
-Identity Framework: Provides authentication and authorization features.
+•	SQL Server: The database management system used to store application data.
 
-SignalR: Used for real-time web functionality, such as chat.
+•	Identity Framework: Provides authentication and authorization features.
 
-Azure SignalR Service: A managed service for adding real-time functionality to applications.
+•	SignalR: Used for real-time web functionality, such as chat.
 
-Bootstrap: A front-end framework for responsive web design.
+•	Azure SignalR Service: A managed service for adding real-time functionality to applications.
 
-Microsoft.Extensions.DependencyInjection: For dependency injection.
+•	Bootstrap: A front-end framework for responsive web design.
 
-Microsoft.AspNetCore.Identity.UI.Services: For email services.
+•	Microsoft.Extensions.DependencyInjection: For dependency injection.
 
-Microsoft.EntityFrameworkCore: For database context and migrations.
+•	Microsoft.AspNetCore.Identity.UI.Services: For email services.
 
-Microsoft.AspNetCore.SignalR: For SignalR hubs.
+•	Microsoft.EntityFrameworkCore: For database context and migrations.
 
-Microsoft.Azure.SignalR: For integrating Azure SignalR Service.
+•	Microsoft.AspNetCore.SignalR: For SignalR hubs.
 
-C# 13.0: The programming language used for the application.
+•	Microsoft.Azure.SignalR: For integrating Azure SignalR Service.
+
+•	C# 13.0: The programming language used for the application.
+
 
 Project Structure
-Controllers: Contains the AccountController, which handles user authentication, registration, and role management.
 
-Models: Contains the data models used throughout the application, such as RegisterModel, LoginModel, and ForgotPasswordModel.
+The project is structured as follows:
 
-Views: Contains the Razor views for the various pages in the application.
+•	Controllers: Contains the AccountController which handles user authentication, registration, and role management.
 
-Data: Contains the database context and migration files.
+•	Models: Contains the data models used throughout the application, such as RegisterModel, LoginModel, ForgotPasswordModel, etc.
 
-Hubs: Contains the SignalR hubs for real-time communication.
+•	Views: Contains the Razor views for the various pages in the application.
+
+•	Data: Contains the database context and migration files.
+
+•	Hubs: Contains the SignalR hubs for real-time communication.
+
 
 Getting Started
-Prerequisites
-.NET 9.0 SDK
 
-SQL Server
+Prerequisites
+
+•	.NET 9.0 SDK
+
+•	SQL Server
 
 Installation
+
 Clone the repository:
 
 bash
-git clone https://github.com//Employee-Chat/employee-chat.git
+
+git clone [https://github.com//Employee-Chat/employee-chat.git](https://github.com/kipkiruiedmond/Employee-Chat)
+
 cd employee-chat
+
 Update the database connection string in appsettings.json:
+
 
 json
 "ConnectionStrings": {
     "DefaultConnection": "Server=your_server;Database=EmployeeChat;Trusted_Connection=True;MultipleActiveResultSets=true"
 }
+
 Apply database migrations:
 
 bash
+
 dotnet ef database update
+
 Run the application:
 
 bash
+
 dotnet run
+
 Usage
+
 Navigate to http://localhost:5000 to access the application.
 
 Register a new user and confirm the email.
